@@ -29,7 +29,11 @@ public class Playerstats : MonoBehaviour
             
         }
         //dying, run any code here you want!
+<<<<<<< Updated upstream
         if (Health <= 0)
+=======
+        if (Health == 0)
+>>>>>>> Stashed changes
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         }

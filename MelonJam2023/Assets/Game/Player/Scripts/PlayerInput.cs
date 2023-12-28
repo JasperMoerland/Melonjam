@@ -6,8 +6,8 @@ using UnityEngine.Events;
 public class PlayerInput : MonoBehaviour
 {
     public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
-    public UnityEvent OnAttack;
-    public UnityEvent OnJump;
+    public UnityEvent OnAttack, Onranged, OnJump;
+
 
     public ContactFilter2D movementFilter;
 
@@ -35,6 +35,10 @@ public class PlayerInput : MonoBehaviour
     void OnFire()
     {
         OnAttack?.Invoke();
+    }
+    void OnRanged()
+    {
+        Onranged?.Invoke();
     }
     void OnDash()
     {

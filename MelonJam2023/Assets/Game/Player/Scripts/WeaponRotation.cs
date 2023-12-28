@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponRotation : MonoBehaviour
 {
-    Animator animator;
+    public GameObject meleePrefab;
     public float delay = 0.5f;
 
     private bool attackBlocked;
@@ -16,8 +16,6 @@ public class WeaponRotation : MonoBehaviour
 
     public bool IsAttacking { get; private set; }
 
-    public Transform circleOrigin;
-    public float radius;
 
     public void ResetIsAttacking()
     {
@@ -26,10 +24,6 @@ public class WeaponRotation : MonoBehaviour
 
     void Update()
     {
-        if (IsAttacking == true)
-        {
-            return;
-        }
         Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 
@@ -44,8 +38,10 @@ public class WeaponRotation : MonoBehaviour
         {
             return;
         };
+        
         IsAttacking = true;
         attackBlocked = true;
+        Instantiate(meleePrefab, transform.position, transform.rotation, null);
         StartCoroutine(DelayAttack());
 
     }
@@ -56,19 +52,5 @@ public class WeaponRotation : MonoBehaviour
         attackBlocked = false;
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Vector3 position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
-        Gizmos.DrawWireSphere(position, radius);
-    }
-
-    public void DetectColliders()
-    {
-        foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position, radius))
-        {
-
-            
-        }
-    }
+    
 }
