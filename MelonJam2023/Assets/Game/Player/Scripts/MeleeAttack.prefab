@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSize: 2
-  growSpeed: 1
-  fadeSpeed: 1.5
+  growSpeed: 2
+  fadeSpeed: 3
   sprite: {fileID: 6820023566950256179}
 --- !u!50 &1735822003013754351
 Rigidbody2D:
