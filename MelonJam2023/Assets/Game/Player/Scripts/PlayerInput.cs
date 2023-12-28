@@ -38,7 +38,6 @@ public class PlayerInput : MonoBehaviour
     }
     void OnDash()
     {
-        Debug.Log("Move");
         OnJump?.Invoke();
     }
 }
