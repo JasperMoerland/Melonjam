@@ -6,6 +6,7 @@ public class Playerstats : MonoBehaviour
     public float MaxHealth;
     public float Damage;
     public string EquipedCharm;
+    public float Mana;
     private float timer;
     // Start is called before the first frame update
     void Start()
