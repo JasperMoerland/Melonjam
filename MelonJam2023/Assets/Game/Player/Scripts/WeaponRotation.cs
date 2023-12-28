@@ -6,7 +6,6 @@ public class WeaponRotation : MonoBehaviour
 {
     Animator animator;
     public float delay = 0.5f;
-    public SpriteRenderer characterRenderer, weaponRenderer;
 
     private bool attackBlocked;
     public Vector2 PointerPosition { get; set; }
@@ -14,12 +13,6 @@ public class WeaponRotation : MonoBehaviour
 
     private AudioSource audioSound;
 
-    private void Start()
-    {
-
-        audioSound = GetComponent<AudioSource>();
-        animator = GetComponentInChildren<Animator>();
-    }
 
     public bool IsAttacking { get; private set; }
 
@@ -37,29 +30,12 @@ public class WeaponRotation : MonoBehaviour
         {
             return;
         }
-
         Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 
         Vector2 scale = transform.localScale;
-        if (direction.x < 0)
-        {
-            scale.y = -1;
-        }
-        else if (direction.x >= 0)
-        {
-            scale.y = 1;
-        }
+        
         transform.localScale = scale;
-
-        if (transform.eulerAngles.z > 0 && transform.eulerAngles.z < 180)
-        {
-            weaponRenderer.sortingOrder = -1;
-        }
-        else
-        {
-            weaponRenderer.sortingOrder = 1;
-        }
     }
 
     public void Attack()
@@ -67,9 +43,7 @@ public class WeaponRotation : MonoBehaviour
         if (attackBlocked)
         {
             return;
-        }
-        audioSound.Play();
-        animator.SetTrigger("swordAttack");
+        };
         IsAttacking = true;
         attackBlocked = true;
         StartCoroutine(DelayAttack());

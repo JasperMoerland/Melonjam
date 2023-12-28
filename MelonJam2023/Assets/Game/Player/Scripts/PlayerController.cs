@@ -26,19 +26,14 @@ public class PlayerController : MonoBehaviour
     public Vector2 MovementInput { get => movementInput; set => movementInput = value; }
     public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
 
-    SpriteRenderer spriterenderer;
-
     Rigidbody2D rb;
 
-    Animator animator;
 
     private void Start()
     {
         weaponParent = GetComponentInChildren<WeaponRotation>();
         agentMover = GetComponent<AgentMovement>();
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        spriterenderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -46,14 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         weaponParent.PointerPosition = pointerInput;
 
-        if (pointerInput.x < rb.position.x)
-        {
-            spriterenderer.flipX = true;
-        }
-        else if (pointerInput.x > rb.position.x)
-        {
-            spriterenderer.flipX = false;
-        }
+        
         agentMover.MovementInput = movementInput;
     }
 
@@ -65,7 +53,7 @@ public class PlayerController : MonoBehaviour
         }
         Dashed = true;
         agentMover.maxSpeed = agentMover.maxSpeed * 4;
-        trailRenderer.emitting = true;
+        //trailRenderer.emitting = true;
         StartCoroutine(ResetDash());
         StartCoroutine(EnableDash());
 
@@ -74,7 +62,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ResetDash()
     {
         yield return new WaitForSeconds(dashDelay);
-        trailRenderer.emitting = false;
+        //trailRenderer.emitting = false;
         agentMover.maxSpeed = agentMover.maxSpeed / 4;
     }
     private IEnumerator EnableDash()

@@ -11,13 +11,11 @@ public class AgentMovement : MonoBehaviour
         set
         {
             isMoving = value;
-            animator.SetBool("IsMoving", isMoving);
         }
     }
 
 
     bool isMoving = false;
-    Animator animator;
 
     Rigidbody2D rb;
 
@@ -31,7 +29,6 @@ public class AgentMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
     }
     private void FixedUpdate()
     {

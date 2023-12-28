@@ -29,6 +29,7 @@ public class PlayerInput : MonoBehaviour
     }
     private void OnMove(InputValue momentValue)
     {
+        
         movementInput = momentValue.Get<Vector2>().normalized;
     }
     void OnFire()
@@ -37,6 +38,7 @@ public class PlayerInput : MonoBehaviour
     }
     void OnDash()
     {
+        Debug.Log("Move");
         OnJump?.Invoke();
     }
 }
