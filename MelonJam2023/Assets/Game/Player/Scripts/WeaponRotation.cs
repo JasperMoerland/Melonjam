@@ -30,8 +30,11 @@ public class WeaponRotation : MonoBehaviour
         {
             float alpha = Mathf.Lerp(sprite.color.a, 1, Time.deltaTime / fadeSpeed);
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, alpha);
+        } else
+        {
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
         }
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
+        
         direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 

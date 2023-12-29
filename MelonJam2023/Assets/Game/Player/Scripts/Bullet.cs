@@ -29,13 +29,32 @@ public class Bullet : MonoBehaviour
         rb.velocity = Movedirection.normalized * moveForce;
     }
 
-    private void OnTriggerEnter2D(Collider2D collisionEnemy)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         {
-            
-            if (collisionEnemy.gameObject.name == "Player") return;
-            if (collisionEnemy.gameObject.layer == gameObject.layer) return;
-            Destroy(gameObject);
+
+
+            if (collider.gameObject.name == "Player") return;
+            if (collider.gameObject.layer == gameObject.layer) return;
+
+            Health health;
+
+            if (health = collider.GetComponentInParent<Health>())
+            {
+                if (collider.CompareTag("HitBox"))
+                {
+                    Debug.Log(collider);
+                    health.GetHit(1, transform.gameObject);
+                }
+
+            }
+            else
+            {
+                //hit a wall
+                //sound
+                //gfx
+            }
+
         }
     }
 }

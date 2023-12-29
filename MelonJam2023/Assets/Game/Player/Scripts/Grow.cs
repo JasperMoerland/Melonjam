@@ -9,11 +9,9 @@ public class Grow : MonoBehaviour
     public SpriteRenderer sprite;
 
     private bool ableToHit = true;
-    private new Collider2D collider;
 
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
         if (ableToHit == true)
         {
 
@@ -34,6 +32,24 @@ public class Grow : MonoBehaviour
             
             if (collisionEnemy.gameObject.name == "Player") return;
             if (collisionEnemy.gameObject.layer == gameObject.layer) return;
+
+            Health health;
+
+            if (health = collisionEnemy.GetComponentInParent<Health>())
+            {
+                if (collisionEnemy.CompareTag("HitBox"))
+                {
+                    Debug.Log(collisionEnemy);
+                    health.GetHit(1, transform.gameObject);
+                }
+
+            } else
+            {
+                //hit a wall
+                //sound
+                //gfx
+            }
+
             Destroy(gameObject);
         }
     }
