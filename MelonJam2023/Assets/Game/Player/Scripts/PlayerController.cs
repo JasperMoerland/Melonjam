@@ -15,16 +15,18 @@ public class PlayerController : MonoBehaviour
     private AgentMovement agentMover;
 
     private WeaponRotation weaponParent;
-    public TrailRenderer trailRenderer;
 
     public float dashDelay = 0.3f;
     public float dashWait = 2f;
     private bool Dashed = false;
 
+    private float charge;
+
 
 
     public Vector2 MovementInput { get => movementInput; set => movementInput = value; }
     public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
+    public float Charge { get => charge; set => charge = value; }
 
     Rigidbody2D rb;
 
@@ -53,7 +55,6 @@ public class PlayerController : MonoBehaviour
         }
         Dashed = true;
         agentMover.maxSpeed = agentMover.maxSpeed * 4;
-        //trailRenderer.emitting = true;
         StartCoroutine(ResetDash());
         StartCoroutine(EnableDash());
 
@@ -70,6 +71,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashWait);
         Dashed = false;
 
+    }
+    public void PerformRangendAttack()
+    {
+        Debug.Log(charge);
+        weaponParent.RangedAttack(charge);
     }
 
     public void PerformAttack()

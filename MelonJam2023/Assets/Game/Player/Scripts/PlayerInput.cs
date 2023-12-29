@@ -6,41 +6,72 @@ using UnityEngine.Events;
 public class PlayerInput : MonoBehaviour
 {
     public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
-    public UnityEvent OnAttack, Onranged, OnJump;
-
+    public UnityEvent OnAttack, OnJump;
+    public UnityEvent<float> Onranged;
+    private float timer;
+    bool timerOn;
 
     public ContactFilter2D movementFilter;
 
     private Vector2 movementInput, pointerInput;
 
-    [SerializeField]
-    private InputAction Fire;
+    private void Start()
+    {
+        timer = 0;
+    }
     private void Update()
     {
+        Timer();
         OnMovementInput?.Invoke(movementInput);
         OnPointerInput?.Invoke(GetPointerInput());
 
     }
-    private Vector2 GetPointerInput()
+    public Vector2 GetPointerInput()
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = Camera.main.nearClipPlane;
         return Camera.main.ScreenToWorldPoint(mousePos);
     }
-    private void OnMove(InputValue momentValue)
+    public void OnMove(InputAction.CallbackContext momentValue)
     {
         
-        movementInput = momentValue.Get<Vector2>().normalized;
+        movementInput = momentValue.ReadValue<Vector2>().normalized;
     }
-    void OnFire()
+    public void OnFire()
     {
         OnAttack?.Invoke();
     }
-    void OnRanged()
+    public void OnRanged(InputAction.CallbackContext context)
     {
-        Onranged?.Invoke();
+        if (context.started) 
+        {
+            
+            timerOn = true;
+            
+        }
+        if (context.canceled) 
+        {
+
+            timerOn = false;
+            
+            Onranged?.Invoke(timer);
+            Debug.Log(timer);
+            
+        }
+        
     }
-    void OnDash()
+
+    void Timer()
+    {
+        if (timerOn)
+        {
+            timer += Time.deltaTime;
+        } else
+        {
+            timer = 0;
+        }
+    }
+    public void OnDash()
     {
         OnJump?.Invoke();
     }

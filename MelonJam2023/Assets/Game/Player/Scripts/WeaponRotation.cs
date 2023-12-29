@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponRotation : MonoBehaviour
 {
     public GameObject meleePrefab;
+    public GameObject bulletPrefab;
     public float delay = 0.5f;
 
     private bool attackBlocked;
@@ -21,10 +23,10 @@ public class WeaponRotation : MonoBehaviour
     {
         IsAttacking = false;
     }
-
+    Vector2 direction;
     void Update()
     {
-        Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
+        direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 
         Vector2 scale = transform.localScale;
@@ -37,13 +39,29 @@ public class WeaponRotation : MonoBehaviour
         if (attackBlocked)
         {
             return;
-        };
+        }
         
         IsAttacking = true;
         attackBlocked = true;
         Instantiate(meleePrefab, transform.position, transform.rotation, null);
         StartCoroutine(DelayAttack());
 
+    }
+    public void RangedAttack(float charge)
+    {
+        if (attackBlocked)
+        {
+            return;
+        }
+        Debug.Log("RangedAttack");
+
+        Vector2 shootdir = direction;
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(Vector3.zero), null);
+        bullet.GetComponent<Bullet>().SetupBullet(shootdir, charge);
+
+        IsAttacking = true;
+        attackBlocked = true;
+        StartCoroutine(DelayAttack());
     }
 
     private IEnumerator DelayAttack()
