@@ -13,10 +13,9 @@ public class EnemyDeath : MonoBehaviour
     {
         points += 1;
         if (Friends != null){
-            //Friends.GetComponent<TextMeshPro>().text = points.ToString();
+            Friends.GetComponent<TextMeshProUGUI>().text = points.ToString();
             playerHealth.currentHealth += reward;
         }
-        
         //sound and gfx
     }
 }
