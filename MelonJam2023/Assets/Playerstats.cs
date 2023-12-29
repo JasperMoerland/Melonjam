@@ -29,9 +29,9 @@ public class Playerstats : MonoBehaviour
         }
         //dying, run any code here you want!
 
-        if (Health <= 0)
+        
 
-        if (Health == 0)
+        if (Health <= 0)
 
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
