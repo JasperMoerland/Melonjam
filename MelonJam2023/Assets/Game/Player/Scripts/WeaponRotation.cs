@@ -30,7 +30,6 @@ public class WeaponRotation : MonoBehaviour
         {
             float alpha = Mathf.Lerp(sprite.color.a, 1, Time.deltaTime / fadeSpeed);
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, alpha);
-            return;
         }
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
         direction = (PointerPosition - (Vector2)transform.position).normalized;
@@ -68,6 +67,7 @@ public class WeaponRotation : MonoBehaviour
 
         Vector2 shootdir = direction;
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(Vector3.zero), null);
+        bullet.transform.right = shootdir;
         bullet.GetComponent<Bullet>().SetupBullet(shootdir, charge);
 
         IsAttacking = true;

@@ -34,11 +34,6 @@ public class PlayerInput : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext momentValue)
     {
-        if (timerOn)
-        {
-            movementInput = Vector2.zero;
-            return;
-        }
         movementInput = momentValue.ReadValue<Vector2>().normalized;
     }
     public void OnFire()
