@@ -32,9 +32,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collisionEnemy)
     {
         {
-            Debug.Log("hit");
-            Debug.Log(collisionEnemy.gameObject.name);
+            
             if (collisionEnemy.gameObject.name == "Player") return;
+            if (collisionEnemy.gameObject.layer == gameObject.layer) return;
             Destroy(gameObject);
         }
     }

@@ -38,6 +38,11 @@ public class AgentMovement : MonoBehaviour
             rb.velocity = Vector2.ClampMagnitude(rb.velocity + (MovementInput * moveSpeed * Time.deltaTime), maxSpeed);
 
             IsMoving = true;
+            Vector2 direction = (rb.velocity).normalized;
+            transform.right = direction;
+            Vector2 scale = transform.localScale;
+
+            transform.localScale = scale;
         }
         else
         {
@@ -45,11 +50,8 @@ public class AgentMovement : MonoBehaviour
 
             IsMoving = false;
         }
-        Vector2 direction = (rb.velocity).normalized;
-        transform.right = direction;
 
-        Vector2 scale = transform.localScale;
 
-        transform.localScale = scale;
+        
     }
 }

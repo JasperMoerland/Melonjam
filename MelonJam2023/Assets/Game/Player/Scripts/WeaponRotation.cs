@@ -13,25 +13,34 @@ public class WeaponRotation : MonoBehaviour
     public Vector2 PointerPosition { get; set; }
     // Update is called once per frame
 
-    private AudioSource audioSound;
 
 
     public bool IsAttacking { get; private set; }
-
-
+    public bool IsAiming { get; set; }
+    public SpriteRenderer sprite;
     public void ResetIsAttacking()
     {
         IsAttacking = false;
     }
     Vector2 direction;
+    public float fadeSpeed = 2;
     void Update()
     {
+        if (IsAiming)
+        {
+            float alpha = Mathf.Lerp(sprite.color.a, 1, Time.deltaTime / fadeSpeed);
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, alpha);
+            return;
+        }
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
         direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 
         Vector2 scale = transform.localScale;
         
         transform.localScale = scale;
+
+        
     }
 
     public void Attack()
@@ -47,8 +56,10 @@ public class WeaponRotation : MonoBehaviour
         StartCoroutine(DelayAttack());
 
     }
+
     public void RangedAttack(float charge)
     {
+        IsAiming = false;
         if (attackBlocked)
         {
             return;

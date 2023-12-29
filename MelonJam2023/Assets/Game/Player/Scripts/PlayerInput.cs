@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerInput : MonoBehaviour
 {
     public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
-    public UnityEvent OnAttack, OnJump;
+    public UnityEvent OnAttack, OnJump, Aiming;
     public UnityEvent<float> Onranged;
     private float timer;
     bool timerOn;
@@ -34,7 +34,11 @@ public class PlayerInput : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext momentValue)
     {
-        
+        if (timerOn)
+        {
+            movementInput = Vector2.zero;
+            return;
+        }
         movementInput = momentValue.ReadValue<Vector2>().normalized;
     }
     public void OnFire()
@@ -47,6 +51,7 @@ public class PlayerInput : MonoBehaviour
         {
             
             timerOn = true;
+            Aiming?.Invoke();
             
         }
         if (context.canceled) 
