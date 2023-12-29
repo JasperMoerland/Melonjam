@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5607355754931840983}
   - component: {fileID: 4045706274609885710}
   - component: {fileID: 8072094952695981833}
-  - component: {fileID: 881451280369536170}
+  - component: {fileID: 5709626288486536071}
   m_Layer: 3
   m_Name: Bullet
   m_TagString: Untagged
@@ -161,8 +161,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &881451280369536170
-CircleCollider2D:
+--- !u!60 &5709626288486536071
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -194,5 +194,26 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.09955748, y: 0.16372128}
+      - {x: -0.014284957, y: 0.25361103}
+      - {x: -0.17137393, y: 0.22396612}
+      - {x: -0.22074361, y: 0.0963711}
+      - {x: -0.14206581, y: 0.0012751222}
+      - {x: -0.21181011, y: -0.06596309}
+      - {x: -0.20566267, y: -0.18405026}
+      - {x: -0.11662978, y: -0.24279167}
+      - {x: -0.019325197, y: -0.24476117}
+      - {x: 0.117136285, y: -0.15619543}
+      - {x: 0.21538132, y: 0.0018905699}
+  m_UseDelaunayMesh: 0

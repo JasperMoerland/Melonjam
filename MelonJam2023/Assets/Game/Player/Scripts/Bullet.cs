@@ -41,11 +41,9 @@ public class Bullet : MonoBehaviour
 
             if (health = collider.GetComponentInParent<Health>())
             {
-                if (collider.CompareTag("HitBox"))
-                {
                     Debug.Log(collider);
                     health.GetHit(1, transform.gameObject);
-                }
+                
 
             }
             else
@@ -54,7 +52,7 @@ public class Bullet : MonoBehaviour
                 //sound
                 //gfx
             }
-
+            Destroy(gameObject);
         }
     }
 }

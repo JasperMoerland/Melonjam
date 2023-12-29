@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    public int currentHealth, maxHealth;
+    public float currentHealth, maxHealth;
 
 
     public UnityEvent<GameObject> OnHitWithReference, OndeathWithReference;
@@ -52,9 +52,10 @@ public class Health : MonoBehaviour
         }
         else
         {
-            OndeathWithReference.Invoke(sender);
+            
             isDead = true;
             Destroy(gameObject);
+            OndeathWithReference.Invoke(sender);
         }
     }
 }

@@ -37,11 +37,9 @@ public class Grow : MonoBehaviour
 
             if (health = collisionEnemy.GetComponentInParent<Health>())
             {
-                if (collisionEnemy.CompareTag("HitBox"))
-                {
                     Debug.Log(collisionEnemy);
                     health.GetHit(1, transform.gameObject);
-                }
+                
 
             } else
             {

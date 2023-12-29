@@ -30,7 +30,7 @@ public class EnemyGrow : MonoBehaviour
     {
         {
 
-            if (collisionEnemy.gameObject.name == "Player") return;
+            if (collisionEnemy.gameObject.name == "Enemy") return;
             if (collisionEnemy.gameObject.layer == gameObject.layer) return;
 
             Health health;
@@ -40,7 +40,7 @@ public class EnemyGrow : MonoBehaviour
  
                 
                     Debug.Log(collisionEnemy);
-                    health.GetHit(1, transform.gameObject);
+                    health.GetHit(10, transform.gameObject);
                 
 
             }
