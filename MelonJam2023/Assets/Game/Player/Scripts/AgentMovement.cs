@@ -45,5 +45,11 @@ public class AgentMovement : MonoBehaviour
 
             IsMoving = false;
         }
+        Vector2 direction = (rb.velocity).normalized;
+        transform.right = direction;
+
+        Vector2 scale = transform.localScale;
+
+        transform.localScale = scale;
     }
 }
