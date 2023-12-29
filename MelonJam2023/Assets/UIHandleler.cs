@@ -26,7 +26,7 @@ public class UIHandleler : MonoBehaviour
      if (oldhealth != player.Health)
         {
             oldhealth = player.Health;
-            UpdateProgress();
+         
         }
     }
 
@@ -76,31 +76,6 @@ private string AbbreviateValue(float value, int decimalPlaces)
 
     return formattedValue + suffixes[suffixIndex];
 }
-    void UpdateProgress()
-    {
-        
-        float progressPercentage = (float)player.Health / player.MaxHealth;
-
-        // Calculate the new amount based on the progress percentage
-       int amount = Mathf.Clamp(Mathf.FloorToInt(progressPercentage * totalparts), 0, totalparts);
-
-        // Activate the GameObjects up to the calculated index
-        ActivateBaseParts(amount);
-    }
-
-    void ActivateBaseParts(int index)
-    {
-        // Deactivate all GameObjects in the array
-        foreach (GameObject part in HealthBarParts)
-        {
-            part.SetActive(false);
-        }
-
-        // Activate the specific GameObjects up to the given index
-        for (int i = 0; i < index; i++)
-        {
-            HealthBarParts[i].SetActive(true);
-        }
-    }
+   
 }
 

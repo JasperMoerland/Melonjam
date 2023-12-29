@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Lonleyness : MonoBehaviour
 {
+    public float lonleyness;
+    public GameObject[] lonleyParts;
     // Start is called before the first frame update
     void Start()
     {
