@@ -14,6 +14,10 @@ public class EnemyGrow : MonoBehaviour
     private void Start()
     {
         collider = GetComponent<Collider2D>();
+        if (ableToHit == true)
+        {
+
+        }
     }
 
     void Update()
@@ -28,8 +32,9 @@ public class EnemyGrow : MonoBehaviour
     {
         {
 
-            if (collisionEnemy.gameObject.name == "Enemy") return;
-            if (collisionEnemy.gameObject.layer == gameObject.layer) return;
+            if (collisionEnemy.gameObject.name == "Enemy") { return; }
+            if (collisionEnemy.gameObject.layer == gameObject.layer) { return; }
+        
             Destroy(gameObject);
         }
     }

@@ -14,6 +14,10 @@ public class Grow : MonoBehaviour
     private void Start()
     {
         collider = GetComponent<Collider2D>();
+        if (ableToHit == true)
+        {
+
+        }
     }
 
     void Update()
