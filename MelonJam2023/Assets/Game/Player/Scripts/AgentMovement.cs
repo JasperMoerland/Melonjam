@@ -25,7 +25,7 @@ public class AgentMovement : MonoBehaviour
     public float collisionOffset = 0.05f;
 
     public float idleFriction = 0.9f;
-
+    private Vector2 direction = Vector2.zero;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,11 +38,7 @@ public class AgentMovement : MonoBehaviour
             rb.velocity = Vector2.ClampMagnitude(rb.velocity + (MovementInput * moveSpeed * Time.deltaTime), maxSpeed);
 
             IsMoving = true;
-            Vector2 direction = (rb.velocity).normalized;
-            transform.right = direction;
-            Vector2 scale = transform.localScale;
-
-            transform.localScale = scale;
+            direction = (rb.velocity).normalized;
         }
         else
         {
@@ -51,7 +47,11 @@ public class AgentMovement : MonoBehaviour
             IsMoving = false;
         }
 
-
         
+        transform.right = direction;
+        Vector2 scale = transform.localScale;
+
+        transform.localScale = scale;
+
     }
 }
