@@ -30,7 +30,7 @@ public class EnemyGrow : MonoBehaviour
     {
         {
 
-            if (collisionEnemy.gameObject.name == "Enemy") return;
+            if (collisionEnemy.gameObject.tag == "Enemy") return;
             if (collisionEnemy.gameObject.layer == gameObject.layer) return;
 
             Health health;

@@ -6,15 +6,19 @@ using UnityEngine;
 public class EnemyDeath : MonoBehaviour
 {
     public Health playerHealth;
-    public GameObject Friends;
+    public TextMeshProUGUI Friends;
     public int reward;
     private int points = 0;
     public void Die()
     {
         points += 1;
+        Debug.Log(playerHealth.currentHealth);
+        playerHealth.currentHealth += reward;
+        if (playerHealth.currentHealth > playerHealth.maxHealth) { playerHealth.currentHealth = playerHealth.maxHealth; }
+        Debug.Log(playerHealth.currentHealth);
         if (Friends != null){
-            Friends.GetComponent<TextMeshProUGUI>().text = points.ToString();
-            playerHealth.currentHealth += reward;
+            Friends.text = points.ToString();
+            
         }
         //sound and gfx
     }

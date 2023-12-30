@@ -55,7 +55,7 @@ public class PlayerInput : MonoBehaviour
             timerOn = false;
             
             Onranged?.Invoke(timer);
-            Debug.Log(timer);
+            
             
         }
         

@@ -23,7 +23,10 @@ public class healthmanager : MonoBehaviour
 
     public void AddLonely(float amount)
     {
-        healthimage.fillAmount = amount/divide;
+        if (healthimage != null)
+        {
+            healthimage.fillAmount = amount / divide;
+        }
     }
 
 }

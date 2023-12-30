@@ -279,10 +279,10 @@ GameObject:
   - component: {fileID: 2253581247393580956}
   - component: {fileID: 6118318897160425694}
   - component: {fileID: 6443369427027853421}
-  - component: {fileID: 6709727747270300659}
+  - component: {fileID: -4669906158754738478}
   m_Layer: 7
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -600,7 +600,7 @@ MonoBehaviour:
   OndeathWithReference:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6709727747270300659}
+      - m_Target: {fileID: -4669906158754738478}
         m_TargetAssemblyTypeName: EnemyDeath, Assembly-CSharp
         m_MethodName: Die
         m_Mode: 1
@@ -614,7 +614,7 @@ MonoBehaviour:
         m_CallState: 2
   isDead: 0
   delay: 2
---- !u!114 &6709727747270300659
+--- !u!114 &-4669906158754738478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
