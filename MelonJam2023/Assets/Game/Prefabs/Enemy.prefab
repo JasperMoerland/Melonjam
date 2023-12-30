@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 6118318897160425694}
   - component: {fileID: 6443369427027853421}
   - component: {fileID: -4669906158754738478}
+  - component: {fileID: 2446435405305940516}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -582,11 +583,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 2
   maxHealth: 2
+  deathPrefab: {fileID: 7686264447806047807, guid: 59f71b0f7b70f18478cdd022ccf99c15, type: 3}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 326812770536484164}
         m_TargetAssemblyTypeName: KnockbackFeedback, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2446435405305940516}
+        m_TargetAssemblyTypeName: FlashFeedback, Assembly-CSharp
         m_MethodName: PlayFeedback
         m_Mode: 0
         m_Arguments:
@@ -612,6 +626,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2446435405305940516}
+        m_TargetAssemblyTypeName: FlashFeedback, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isDead: 0
   delay: 2
 --- !u!114 &-4669906158754738478
@@ -629,6 +655,20 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   Friends: {fileID: 0}
   reward: 25
+--- !u!114 &2446435405305940516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211054761738747925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0f94cfb38bf5548a49ce6c0a4b78a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circle: {fileID: 9160928252109768912}
+  delay: 0.1
 --- !u!1 &3377393042610320027
 GameObject:
   m_ObjectHideFlags: 0

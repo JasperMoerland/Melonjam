@@ -10,6 +10,9 @@ public class Health : MonoBehaviour
     public float currentHealth, maxHealth;
 
 
+    [SerializeField]
+    private GameObject deathPrefab;
+
     public UnityEvent<GameObject> OnHitWithReference, OndeathWithReference;
 
     [SerializeField]
@@ -54,6 +57,7 @@ public class Health : MonoBehaviour
         {
             
             isDead = true;
+            Instantiate(deathPrefab, transform.position, transform.rotation, null);
             Destroy(gameObject);
             OndeathWithReference.Invoke(sender);
         }

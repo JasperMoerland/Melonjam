@@ -15,7 +15,7 @@ public class RemoveHealth : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             health.currentHealth -= 1;
         }
     }
