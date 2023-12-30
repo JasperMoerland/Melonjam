@@ -33,9 +33,9 @@ public class EnemyGrow : MonoBehaviour
             if (collisionEnemy.gameObject.tag == "Enemy") return;
             if (collisionEnemy.gameObject.layer == gameObject.layer) return;
 
-            Health health;
+            PlayerHealth health;
 
-            if (health = collisionEnemy.GetComponentInParent<Health>())
+            if (health = collisionEnemy.GetComponentInParent<PlayerHealth>())
             {
  
                 

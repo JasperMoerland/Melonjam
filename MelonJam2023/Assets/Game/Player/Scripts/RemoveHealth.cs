@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class RemoveHealth : MonoBehaviour
 {
-    Health health;
+    PlayerHealth health;
     private void Start()
     {
-        health = GetComponent<Health>();
+        health = GetComponent<PlayerHealth>();
         StartCoroutine(lonely());
     }
     private IEnumerator lonely()

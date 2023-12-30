@@ -20,12 +20,7 @@ public class Health : MonoBehaviour
 
     public float delay = 2f;
 
-    Rigidbody2D rb;
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
     public void InitializeHealth(int healthValue)
     {
         currentHealth = healthValue;

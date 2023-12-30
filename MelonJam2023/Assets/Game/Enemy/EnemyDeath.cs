@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyDeath : MonoBehaviour
 {
-    public Health playerHealth;
+    public PlayerHealth playerHealth;
     public TextMeshProUGUI Friends;
     public int reward;
     private int points = 0;
