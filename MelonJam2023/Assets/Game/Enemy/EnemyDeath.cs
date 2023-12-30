@@ -11,8 +11,8 @@ public class EnemyDeath : MonoBehaviour
     private int points = 0;
     public void Die()
     {
-        Points.instance.points += 1;
-        points = Points.instance.points;
+        PlayerPoints.instance.points += 1;
+        points = PlayerPoints.instance.points;
         Debug.Log(playerHealth.currentHealth);
         playerHealth.currentHealth += reward;
         if (playerHealth.currentHealth > playerHealth.maxHealth) { playerHealth.currentHealth = playerHealth.maxHealth; }
