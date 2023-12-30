@@ -9,7 +9,6 @@ public class RemoveHealth : MonoBehaviour
     {
         health = GetComponent<Health>();
         StartCoroutine(lonely());
-
     }
     private IEnumerator lonely()
     {

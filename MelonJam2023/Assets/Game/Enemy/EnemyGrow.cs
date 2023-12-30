@@ -40,7 +40,7 @@ public class EnemyGrow : MonoBehaviour
  
                 
                     Debug.Log(collisionEnemy);
-                    health.GetHit(10, transform.gameObject);
+                    health.GetHit(30, transform.gameObject);
                 
 
             }
