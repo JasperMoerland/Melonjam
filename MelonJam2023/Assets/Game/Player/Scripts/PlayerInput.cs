@@ -11,12 +11,15 @@ public class PlayerInput : MonoBehaviour
     private float timer;
     bool timerOn;
 
+
+    private AgentMovement agentMover;
     public ContactFilter2D movementFilter;
 
     private Vector2 movementInput, pointerInput;
 
     private void Start()
     {
+        agentMover = GetComponent<AgentMovement>();
         timer = 0;
     }
     private void Update()
@@ -44,14 +47,14 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.started) 
         {
-            
+            agentMover.maxSpeed /= 4f;
             timerOn = true;
             Aiming?.Invoke();
             
         }
         if (context.canceled) 
         {
-
+            agentMover.maxSpeed *= 4f;
             timerOn = false;
             
             Onranged?.Invoke(timer);

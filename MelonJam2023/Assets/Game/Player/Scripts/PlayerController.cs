@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         Dashed = true;
-        agentMover.maxSpeed = agentMover.maxSpeed * 4;
+        agentMover.maxSpeed *= 4f;
         StartCoroutine(ResetDash());
         StartCoroutine(EnableDash());
 
@@ -63,8 +63,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ResetDash()
     {
         yield return new WaitForSeconds(dashDelay);
-        //trailRenderer.emitting = false;
-        agentMover.maxSpeed = agentMover.maxSpeed / 4;
+        agentMover.maxSpeed /=  4f;
     }
     private IEnumerator EnableDash()
     {
